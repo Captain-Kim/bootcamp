@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="review-page-title">FlickerFlow</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/detail.css">
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/detail.js"></script>
+    <script type="module" src="./js/language.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <header>
+            <div id="top_of_header">
+                <div class="inner_wrap2">
+                    <div id="logo">
+                        <a href="./index.html">FlickerFlow</a>
+                    </div>
+                    <form action="" method="post" id="search">
+                        <input type="text" id="search_input" focus>
+                        <button type="submit">
+                            <img src="./assets/icon/search.svg" alt="">
+                        </button>
+                    </form>
+                    <div id="decorated_icons">
+                        <img src="assets/icon/lang.png" id="lang_change_btn_detail" alt="한영변환">
+                        <a href="./heart.html">
+                            <img src="assets/icon/heartlist.png" id="heartlink" alt="찜목록">
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </header>
+        <main>
+            <div class="detail_main inner_wrap">
+            </div>
+            <div class="reviews inner_wrap">
+
+                <form action="" id="review-form">
+                    <p id="review-title">감상평</p>
+                    <div class="review-input">
+                        <input type="text" id="review" placeholder="감상평을 적어주세요!">
+                        <button type="submit" id="submit-review">등록</button>
+                    </div>
+                </form>
+                <ul id="review-list">
+                </ul>
+            </div>
+            <div id="modal" class="hidden">
+                <div class="modal-box">
+                    <button class="close">
+                        <img src="./assets/icon/close.png" alt="">
+                    </button>
+                    <textarea type="text" id="modal-text" placeholder="댓글 내용"></textarea>
+                    <input type="text" id="modal-id" placeholder="닉네임">
+                    <input type="password" id="modal-pw" placeholder="비밀번호">
+                    <!-- <input type="text" id="pw" placeholder="비밀번호"> -->
+                    <button id="modal-ok">확인</button>
+                </div>
+                <div id="modal-bg" class="close"></div>
+            </div>
+        </main>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <p id="footer">
+                        <a href="https://velog.io/@tmdqls/posts1">전승빈</a>
+                        <a href="https://infistudy.tistory.com">김병준</a>
+                        <a href="https://for-cording-cheers.tistory.com/">김가연</a>
+                        <a href="https://velog.io/@solpark16/">박솔</a>
+                        <a href="https://velog.io/@ly0609/posts">이준혁</a>
+                        <a href="https://velog.io/@eldoradodo/posts">김도연</a>
+                    </p>
+                </div>
+                <div class="footer-right">
+                    <a href="https://github.com/Junseungbhin/BootCampWeek-2">
+                        <img src="assets/icon/github.png" alt="GitHub">
+                    </a>
+                </div>
+            </div>
+        </footer>
+</body>
+
+</html>

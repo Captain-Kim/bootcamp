@@ -1,0 +1,320 @@
+/* detail css */
+.detail_main{
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 요소를 배치 */
+  justify-content: center; /* 수직 가운데 정렬 */
+  align-items: center; /* 수평 가운데 정렬 */
+  margin-top: 50px;
+}
+
+.detail_container{
+  width: 60%;
+  text-align: left; /* 글씨는 왼쪽부터 정렬 */
+  margin-top: 50px;
+}
+
+.img_container {
+  position: relative;
+  width: 100%; /* 원하는 너비로 설정 */
+  height: 40rem; /* 원하는 높이로 설정 */
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  margin-bottom: 2rem;
+}
+
+.detail_img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2; 
+  opacity: 0.1;
+  background-color: black;
+  filter: blur(5px);
+}
+
+.detail_main_img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.content_container{
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: left;
+  padding: 1rem;
+  width: 100%;
+}
+
+
+.detail_box1{
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+}
+
+.detail_box1_hr{
+  background-color: rgb(197, 197, 197);
+  width: 1px;
+  border: 0;
+}
+
+.detail_heart_btn{
+  margin-left: 1rem;
+  border: 0;
+  background-color: transparent;
+}
+
+.detail_box2 {
+  display: flex;
+  width: 100%;
+  margin: 0.3rem;
+}
+
+.certification_hr{
+  background-color: rgb(197, 197, 197);
+  width: 1px;
+  border: 0;
+}
+
+.detail_box3_hr{
+  width: 100%;
+}
+
+.detail_scores{
+  display: flex;
+}
+
+.detail_box2 > *{
+  margin: 0.2rem;
+}
+
+#scores{
+  color: rgb(252, 60, 60);
+  margin-right: 0.3rem;
+}
+
+.detail_box3{
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 요소를 배치합니다. */
+  justify-content: center; /* 수직 가운데 정렬 */
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.detail_box3 div, .detail_box3 h4, .detail_box3 h5 {
+  margin-right: 1rem; /* 텍스트 사이의 간격 설정 */
+  margin-bottom: 0.2rem;
+}
+
+.detail_box3 div, .detail_box3 h4{
+  white-space: nowrap; 
+}
+
+.detail_box3 div, .detail_box3 h5{
+  white-space: normal; 
+}
+
+.detail_director{
+  display: flex;
+}
+
+.detail_actors{
+  display: flex;
+}
+
+.detail_contents{
+  display: flex;
+}
+
+/* reviews css */
+.reviews {
+  width: 100%;
+  padding-bottom: 100px !important;
+}
+
+#review-form > p{
+  line-height: 3rem;
+  font-size: 1.1rem;
+}
+
+.review-input {
+  width: 100%;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-input input {
+  width: calc(100% - 70px);
+  height: 43px;
+  padding: 13px 12px 10px;
+  border: 1px solid #ccc;
+  border-right: 0;
+  outline: none;
+}
+
+.review-input input::placeholder {
+  color: #ccc;
+}
+
+.review-input button {
+  width: 70px;
+  height: 43px;
+  color: #fff;
+  background-color: #f02459;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,.1);
+  cursor: pointer;
+}
+
+#review-list .review {
+  width: calc(100% - 20px);
+  margin: 0 10px;
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+#review-list .review-name {
+  margin-bottom: 12px;
+}
+
+#review-list .review-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+
+}
+
+.review-text {margin-bottom: 10px;}
+
+.review-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-button button {
+  background-color: #333;
+  color: #fff;
+  padding: 5px 15px;
+  border: 0;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+#modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+#modal.hidden {
+  display: none;
+}
+
+#modal-bg {
+
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-box {
+  display: flex;
+  flex-direction: column;
+  padding: 0 5px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  background-color: #fff;
+}
+
+.modal-box input {
+  width: 80%;
+  height: 50px;
+  padding: 5px;
+  outline: none;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  display: none;
+}
+.modal-box textarea {
+  width: 80%;
+  padding: 5px;
+  outline: none;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  resize: none;
+  display: none;
+}
+
+#modal-ok {
+  width: 80%;
+  color: #fff;
+  background-color: #333;
+  border: 0;
+  height: 50px;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-bottom: 30px;
+
+}
+
+.modal-box .close {
+  width:8%;
+  background-color: #fff;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  margin: 10px 0;
+  margin-left: 92%;
+  outline: none;
+}
+
+#modal .modal-box #modal-pw {
+  display: block;
+}
+
+#modal.add .modal-box #modal-id{
+  display: block;
+}
+#modal.update .modal-box #modal-text{
+  display: block;
+}
+
+/* 찜하기 관련 css */
+.detail_heart_btn {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+.detail_heart_btn img {
+  width: 30px;
+}
+.detail_heart_btn:hover img.heartRed,
+.detail_heart_btn img.heartEmpty,
+.detail_heart_btn.clicked:hover img.heartEmpty,
+.detail_heart_btn.clicked img.heartRed {
+  display: block;
+}
+.detail_heart_btn:hover img.heartEmpty,
+.detail_heart_btn img.heartRed,
+.detail_heart_btn.clicked:hover img.heartRed,
+.detail_heart_btn.clicked img.heartEmpty {
+  display: none;
+}

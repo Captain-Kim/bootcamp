@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch 시작하기</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function hey() {
+            let url = 'http://spartacodingclub.shop/sparta_api/seoulair';
+            fetch(url).then(res => res.json()).then(data => {
+                console.log(data['RealtimeCityAir']['row'][0])
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="hey()">fetch 연습!</button>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+/* .pick_title {
+  font-size: 35px;
+  margin: 40px;
+  text-align: center;
+  justify-content: center;
+  font-weight: 550;
+} */
+.pick_view {
+  width: fit-content;
+  font-size: 25px;
+  margin: 25px auto 0;
+  border-bottom: 4px solid #f02459; /* 밑줄 설정 */
+  padding-bottom: 5px;
+}
+.inner_wrap {
+  margin-top: 50px;
+}
+.pick_nothing {
+  width: auto;
+  text-align: center;
+  display: none;
+}
+
+.pick_img {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.pick_img img {
+  width: 100px;
+  height: auto;
+  margin-top: 200px;
+  margin-bottom: 5px;
+}
+
+.pick_detail {
+  font-size: 20px;
+  margin: 8px auto 0;
+}
+
+.pick_movie {
+  max-width: 1200px;
+  margin: 0 auto;
+}

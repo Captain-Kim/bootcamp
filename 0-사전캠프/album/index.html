@@ -1,0 +1,201 @@
+<!-- 코드 처음 작성 시에는 html : 5로 헤드와 바디를 템플릿으로 입력 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나만의 추억앨범</title>
+    <!-- jQuery CDN 타이틀 아래 삽입 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- 부트스트랩의 CSS를 이용하기 위해서 가장 먼저  넣어야 하는 태그, 타이틀 아래 스타일 위 -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@100..900&family=Song+Myung&display=swap');
+
+        /* 구글 폰트를 사용하기 위한 import 태그 */
+        * {
+            font-family: "Noto Sans KR", sans-serif;
+        }
+
+        /* 이제부터 사용하는 모든 텍스트는 해당 폰트로 하겠다는 의미, 스타일의 가장 첫번째에 입력 */
+        .mytitle {
+            background-color: green;
+            height: 250px;
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background-image: url(https://images.unsplash.com/photo-1511992243105-2992b3fd0410?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80);
+            background-position: center;
+            background-size: cover;
+        }
+
+        /* body에서 class로 지정한 mytitle을 통쨰로 꾸며주는 태그 */
+        .mytitle>button {
+            width: 150px;
+            height: 50px;
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            border-radius: 5px;
+
+            margin-top: 20px;
+        }
+
+        .mycard {
+            width: 1200px;
+
+            margin: 30px auto 0px auto;
+        }
+
+        .mypostingbox {
+            width: 500px;
+
+            margin: 30px auto 0px auto;
+            padding: 20px;
+            border-radius: 5px;
+
+            box-shadow: 0px 0px 3px 0px blue;
+
+        }
+
+        .mybtn {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* disflay flex는 해당 스타일을 가운데로 정렬하는 태그. flex-direction이 row는 한 줄로, column은 세로로 */
+
+        .mybtn>button {
+            margin-right: 5px;
+        }
+
+        /* mybtn의 안에 있는 버튼에 대한 스타일을 정의한다. margin은 외부의 여백이고, 5px 0px 0px 0px은 북 동 남 서 순이고, margin-right는 우측 외부 여백*/
+    </style>
+    <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+        // Firebase 구성 정보 설정
+        const firebaseConfig = {
+            apiKey: "AIzaSyD2_geSno5RwJUCP0ldPk8tevUCB55o0IY",
+            authDomain: "sparta-cfac7.firebaseapp.com",
+            projectId: "sparta-cfac7",
+            storageBucket: "sparta-cfac7.appspot.com",
+            messagingSenderId: "786304585405",
+            appId: "1:786304585405:web:546a3f78bd4e53205f71d4",
+            measurementId: "G-38SSTRD18S"
+        };
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        $("#postingbtn").click(async function () {
+            let image = $('#image').val();
+            let title = $('#title').val();
+            let content = $('#content').val();
+            let date = $('#date').val();
+
+            let doc = {
+                'image': image,
+                'title': title,
+                'content': content,
+                'date': date
+            };
+            await addDoc(collection(db, "albums"), doc);
+            alert('저장 완료!');
+            window.location.reload();
+        })
+
+        // script의 module 타입을 적용하여 onclick이 더이상 작동하지 않아 그 기능을 다시 만들어주는 것 //
+        $("#savebtn").click(async function () {
+            $('#postingbox').toggle();
+        })
+
+        let url = "http://spartacodingclub.shop/sparta_api/seoulair";
+        fetch(url).then(res => res.json()).then(data => {
+            let mise = data['RealtimeCityAir']['row'][0]['IDEX_NM'];
+            $('#msg').text(mise);
+        });
+
+        // 파이어베이스 데이터 읽기 스켈레톤 //
+        let docs = await getDocs(collection(db, "albums"));
+        docs.forEach((doc) => {
+            let row = doc.data();
+
+            let image = row['image'];
+            let title = row['title'];
+            let content = row['content'];
+            let date = row['date'];
+
+            let temp_html = `
+            <div class="col">
+                <div class="card h-100">
+                    <img src="${image}"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">${title}</h5>
+                        <p class="card-text">${content}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-body-secondary">${date}</small>
+                    </div>
+                </div>
+            </div>`;
+            $('#card').append(temp_html);
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <div class="mytitle">
+        <h1>나만의 추억앨범</h1>
+        <P>현재 서울의 미세먼지 : <span id="msg">나쁨</span></P>
+        <button id="savebtn">추억 저장하기</button>
+    </div>
+    <div class="mypostingbox" id="postingbox">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="image" placeholder="앨범 이미지">
+            <label for="floatingInput">앨범 이미지</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="title" placeholder="앨범 제목">
+            <label for="floatingInput">앨범 제목</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="content" placeholder="앨범 내용">
+            <label for="floatingInput">앨범 내용</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="date" placeholder="앨범 날짜">
+            <label for="floatingInput">앨범 날짜</label>
+        </div>
+        <div class="mybtn">
+            <button id="postingbtn" type="button" class="btn btn-primary">기록하기</button>
+            <button type="button" class="btn btn-outline-primary">닫기</button>
+        </div>
+    </div>
+    <div class="mycard">
+        <div id="card" class="row row-cols-1 row-cols-md-4 g-4">
+
+          
+        </div>
+    </div>
+</body>
+
+</html>
